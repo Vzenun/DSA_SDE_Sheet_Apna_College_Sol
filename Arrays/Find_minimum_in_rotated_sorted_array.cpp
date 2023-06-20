@@ -1,27 +1,14 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
+    int findMin(vector<int>& nums) {
         int n=nums.size();
         if(n==1){
-            if(nums[0]==target){
-                return 0;
-            }
-            else{
-                return -1;
-            }
+            return nums[0];
         }
         if(n==2){
-            if(nums[0]==target){
-                return 0;
-            }
-            if(nums[1]==target){
-                return 1;
-            }
-            else{
-                return -1;
-            }
+            return min(nums[0],nums[1]);
         }
         int flag=0;
         int i=-1;
@@ -57,23 +44,6 @@ public:
                 break;
             }
         }
-        i=-1;
-        j=n;
-        while(i+1<j){
-            int m=(i+j)/2;
-            int m1=(m+flag)%n;
-            if(nums[m1]<=target){
-                i=m;
-            }
-            else{
-                j=m;
-            }
-        }
-        if(i+flag!=-1 && nums[(i+flag)%n]==target){
-            return (flag+i)%n;
-        }
-        else{
-            return -1;
-        }
+        return nums[flag];
     }
 };
